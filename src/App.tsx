@@ -1,57 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./App.module.scss";
-import clear from "./assets/clear.png";
-import cloudy from "./assets/cloudy.png";
-import drizzle from "./assets/drizzle.png";
-import rain from "./assets/rain.png";
-import snow from "./assets/snow.png";
-import atmosphere from "./assets/atmosphere.png";
-import thunderstorm from "./assets/thunderstorm.png";
+import {
+  backgroundImages,
+  Icons,
+  IconTypes,
+  StationsStructure,
+  WeatherCondition,
+  WeatherStructure,
+} from "./const";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-
-interface WeatherStructure {
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-  };
-  name: string;
-  weather: {
-    main: string;
-    description: string;
-  }[];
-}
-
-const backgroundImages: { [key in WeatherCondition]: string } = {
-  cloudy: cloudy,
-  clear: clear,
-  drizzle: drizzle,
-  rain: rain,
-  snow: snow,
-  atmosphere: atmosphere,
-  thunderstorm: thunderstorm,
-};
-
-interface StationsStructure {
-  name: string;
-  state: string;
-  country: string;
-  lat: number;
-  lon: number;
-}
-
-type WeatherCondition =
-  | "cloudy"
-  | "clear"
-  | "drizzle"
-  | "rain"
-  | "snow"
-  | "atmosphere"
-  | "thunderstorm";
 
 function App() {
   const [weatherData, setWeatherData] = useState({} as WeatherStructure);
@@ -105,7 +63,7 @@ function App() {
   return (
     <>
       <img
-        src={backgroundImages?.[weatherCondition] ?? cloudy}
+        src={backgroundImages?.[weatherCondition] ?? backgroundImages.cloudy}
         alt={weatherCondition}
         className={styles.backgroundImage}
       />
@@ -145,6 +103,7 @@ function WeatherContent({
 
   const weatherCondition = weather?.[0]?.main as WeatherCondition;
   const weatherDescription = weather?.[0]?.description;
+  const icon = Icons[weather?.[0]?.icon as IconTypes];
 
   return (
     <div className={styles.weatherContent}>
@@ -152,6 +111,8 @@ function WeatherContent({
         {...{
           main,
           name,
+          weatherCondition,
+          icon,
           locationError,
           weatherError,
           selectedStation,
@@ -166,6 +127,8 @@ function WeatherContent({
 function TemperatureData({
   main,
   name,
+  weatherCondition,
+  icon,
   locationError,
   weatherError,
   selectedStation,
@@ -173,6 +136,8 @@ function TemperatureData({
 }: {
   main: WeatherStructure["main"];
   name: WeatherStructure["name"];
+  weatherCondition: WeatherCondition;
+  icon: string;
   locationError: boolean;
   weatherError: string;
   selectedStation: StationsStructure;
@@ -180,7 +145,9 @@ function TemperatureData({
 }) {
   return (
     <div>
-      <p className={styles.tempContainer}>{main?.temp ?? "--"}°F</p>
+      <p className={styles.tempContainer}>
+        {main?.temp ?? "--"}°F <img src={icon} alt={weatherCondition} />
+      </p>
       in{" "}
       {!locationError ? (
         name

@@ -44,6 +44,21 @@
     padding: 10px;
   }
 
+  input {
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    font-size: unset;
+
+    &:focus,
+    &:active,
+    &:hover {
+      outline: none;
+      border: none;
+      border-bottom: 2px solid black;
+    }
+  }
+
   .dropdown {
     position: absolute;
     top: 100%;
@@ -60,8 +75,6 @@
     li {
       padding: 10px;
       cursor: pointer;
-      border-bottom: "2px solid black";
-      background: none;
     }
   }
 }
