@@ -1,0 +1,35 @@
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+.weatherContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 60px;
+
+  .tempContainer {
+    font-size: 3rem;
+  }
+
+  .weatherMetrics {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    gap: 4px;
+
+    p {
+      text-align: right;
+    }
+
+    hr {
+      margin: 10px 0 8px;
+      border: 1px solid black;
+    }
+  }
+}
