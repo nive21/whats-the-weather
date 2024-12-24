@@ -1,8 +1,5 @@
-export function getTimeString(
-  timestampUTC: number,
-  timeZoneDiffInSeconds: number
-): string {
-  const currentTimeInMs = (timestampUTC + timeZoneDiffInSeconds) * 1000;
+export function getTimeString(timestampUTC: number): string {
+  const currentTimeInMs = timestampUTC * 1000;
   const options: Intl.DateTimeFormatOptions = {
     hour: "2-digit",
     minute: "2-digit",

@@ -1,10 +1,10 @@
-import clear from "../assets/clear.png";
-import cloudy from "../assets/cloudy.png";
-import drizzle from "../assets/drizzle.png";
-import rain from "../assets/rain.png";
-import snow from "../assets/snow.png";
-import atmosphere from "../assets/atmosphere.png";
-import thunderstorm from "../assets/thunderstorm.png";
+import clear from "../assets/background/clear.png";
+import cloudy from "../assets/background/cloudy.png";
+import drizzle from "../assets/background/drizzle.png";
+import rain from "../assets/background/rain.png";
+import snow from "../assets/background/snow.png";
+import atmosphere from "../assets/background/atmosphere.png";
+import thunderstorm from "../assets/background/thunderstorm.png";
 import brokenIcon from "../assets/icons/broken.svg";
 import clearDayIcon from "../assets/icons/clear-day.svg";
 import clearNightIcon from "../assets/icons/clear-night.svg";
@@ -27,7 +27,6 @@ export interface WeatherStructure {
   };
   name: string;
   dt: number;
-  timezone: number;
   sys: {
     sunrise: number;
     sunset: number;

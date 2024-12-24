@@ -19,10 +19,10 @@ export default function WeatherContent({
   weatherError: string;
   setSelectedStation: (station: StationsStructure) => void;
 }) {
-  const { main, name, weather, dt, timezone } = weatherData;
+  const { main, name, weather, dt } = weatherData;
 
   const timeString = Object.values(weatherData)?.length
-    ? getTimeString(dt, timezone)
+    ? getTimeString(dt)
     : "";
 
   const weatherCondition = weather?.[0]?.main as WeatherCondition;
