@@ -70,10 +70,10 @@ function Home() {
 
   return (
     <>
+      {isNight && <div className={styles.nightOverlay}></div>}
       <div className={styles.animal}>
         <Animal />
       </div>
-      {isNight && <div className={styles.nightOverlay}></div>}
       <img
         src={
           backgroundImages?.[
