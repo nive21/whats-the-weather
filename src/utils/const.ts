@@ -39,22 +39,39 @@ export interface WeatherStructure {
 }
 
 export type WeatherCondition =
-  | "cloudy"
+  | "clouds"
   | "clear"
   | "drizzle"
   | "rain"
   | "snow"
-  | "atmosphere"
-  | "thunderstorm";
+  | "thunderstorm"
+  | "mist"
+  | "smoke"
+  | "haze"
+  | "dust"
+  | "fog"
+  | "sand"
+  | "dust"
+  | "ash"
+  | "squall"
+  | "tornado";
 
 export const backgroundImages: { [key in WeatherCondition]: string } = {
-  cloudy: cloudy,
+  clouds: cloudy,
   clear: clear,
   drizzle: drizzle,
   rain: rain,
   snow: snow,
-  atmosphere: atmosphere,
   thunderstorm: thunderstorm,
+  mist: atmosphere,
+  smoke: atmosphere,
+  haze: atmosphere,
+  dust: atmosphere,
+  fog: atmosphere,
+  sand: atmosphere,
+  ash: atmosphere,
+  squall: atmosphere,
+  tornado: atmosphere,
 };
 
 export type IconTypes =

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 import styles from "../styles/Weather.module.scss";
 import {
   backgroundImages,
@@ -19,7 +20,7 @@ function Home() {
     {} as StationsStructure
   );
 
-  // const [units, setUnits] = useState("imperial");
+  // TODO: Make this a user setting
   const units = "imperial";
 
   const fetchData = async (lat: number, lon: number) => {
@@ -69,6 +70,9 @@ function Home() {
 
   return (
     <>
+      <div className={styles.animal}>
+        <Animal />
+      </div>
       {isNight && <div className={styles.nightOverlay}></div>}
       <img
         src={
@@ -95,3 +99,17 @@ function Home() {
 }
 
 export default Home;
+
+export const Animal = () => {
+  const { RiveComponent } = useRive({
+    src: "lamb.riv",
+    stateMachines: "State Machine 1",
+    layout: new Layout({
+      fit: Fit.FitWidth,
+      alignment: Alignment.Center,
+    }),
+    autoplay: true,
+  });
+
+  return <RiveComponent />;
+};

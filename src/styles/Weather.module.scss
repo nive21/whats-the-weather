@@ -7,11 +7,31 @@
   z-index: -2;
 }
 
+.animal {
+  position: absolute;
+  bottom: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  div:first-child {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
+
 .weatherContent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 60px;
+
+  > div {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+  }
 
   .tempContainer {
     font-size: 3rem;
