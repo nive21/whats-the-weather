@@ -78,3 +78,14 @@
     }
   }
 }
+
+.nightOverlay {
+  background-color: #12007d;
+  opacity: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}

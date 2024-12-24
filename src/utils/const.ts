@@ -6,7 +6,8 @@ import snow from "../assets/snow.png";
 import atmosphere from "../assets/atmosphere.png";
 import thunderstorm from "../assets/thunderstorm.png";
 import brokenIcon from "../assets/icons/broken.svg";
-import clearIcon from "../assets/icons/clear.svg";
+import clearDayIcon from "../assets/icons/clear-day.svg";
+import clearNightIcon from "../assets/icons/clear-night.svg";
 import fewIcon from "../assets/icons/few.svg";
 import mistIcon from "../assets/icons/mist.svg";
 import rainIcon from "../assets/icons/rain.svg";
@@ -25,6 +26,12 @@ export interface WeatherStructure {
     humidity: number;
   };
   name: string;
+  dt: number;
+  timezone: number;
+  sys: {
+    sunrise: number;
+    sunset: number;
+  };
   weather: {
     main: string;
     description: string;
@@ -72,8 +79,8 @@ export type IconTypes =
   | "50n";
 
 export const Icons: { [key in IconTypes]: string } = {
-  "01d": clearIcon,
-  "01n": clearIcon,
+  "01d": clearDayIcon,
+  "01n": clearNightIcon,
   "02d": fewIcon,
   "02n": fewIcon,
   "03d": scatteredIcon,

@@ -58,11 +58,20 @@ function Home() {
   }, [selectedStation, locationError]);
 
   const weatherCondition = weatherData?.weather?.[0]?.main as WeatherCondition;
+  const isNight = !Object.values(weatherData).length
+    ? false
+    : weatherData.dt > weatherData.sys.sunset ||
+      weatherData.dt < weatherData.sys.sunrise;
 
   return (
     <>
+      {isNight && <div className={styles.nightOverlay}></div>}
       <img
-        src={backgroundImages?.[weatherCondition] ?? backgroundImages.cloudy}
+        src={
+          backgroundImages?.[
+            weatherCondition?.toLowerCase() as WeatherCondition
+          ] ?? backgroundImages.clear
+        }
         alt={weatherCondition}
         className={styles.backgroundImage}
       />

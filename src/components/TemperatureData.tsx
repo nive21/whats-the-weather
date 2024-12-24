@@ -5,9 +5,11 @@ import {
 } from "../utils/const";
 import LocationSelector from "./LocationSelector";
 import styles from "../styles/Weather.module.scss";
+
 export default function TemperatureData({
   main,
   name,
+  timeString,
   weatherCondition,
   icon,
   weatherError,
@@ -15,6 +17,7 @@ export default function TemperatureData({
 }: {
   main: WeatherStructure["main"];
   name: WeatherStructure["name"];
+  timeString: string;
   weatherCondition: WeatherCondition;
   icon: string;
   weatherError: string;
@@ -22,6 +25,7 @@ export default function TemperatureData({
 }) {
   return (
     <div>
+      {timeString && <p>{timeString}</p>}
       <p className={styles.tempContainer}>
         {main?.temp ?? "--"}°F <img src={icon} alt={weatherCondition} />
       </p>

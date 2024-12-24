@@ -8,6 +8,8 @@ import {
 import TemperatureData from "./TemperatureData";
 import WeatherMetrics from "./WeatherMetrics";
 import styles from "../styles/Weather.module.scss";
+import { getTimeString } from "../utils/helpers";
+
 export default function WeatherContent({
   weatherData,
   weatherError,
@@ -17,7 +19,11 @@ export default function WeatherContent({
   weatherError: string;
   setSelectedStation: (station: StationsStructure) => void;
 }) {
-  const { main, name, weather } = weatherData;
+  const { main, name, weather, dt, timezone } = weatherData;
+
+  const timeString = Object.values(weatherData)?.length
+    ? getTimeString(dt, timezone)
+    : "";
 
   const weatherCondition = weather?.[0]?.main as WeatherCondition;
   const weatherDescription = weather?.[0]?.description;
@@ -29,6 +35,7 @@ export default function WeatherContent({
         {...{
           main,
           name,
+          timeString,
           weatherCondition,
           icon,
           weatherError,
